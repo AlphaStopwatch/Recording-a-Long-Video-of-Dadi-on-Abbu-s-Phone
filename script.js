@@ -590,7 +590,12 @@
    */
   function createCounter(spec) {
     var id = spec.id;
-    var timers = spec.timers || { set: setTimeout, clear: clearTimeout };
+    // Wrapped in arrow-free functions on purpose: browsers throw "Illegal invocation" if
+    // setTimeout/clearTimeout are called as methods of another object (timers.set(...)).
+    var timers = spec.timers || {
+      set: function (f, ms) { return setTimeout(f, ms); },
+      clear: function (h) { return clearTimeout(h); }
+    };
     var capMs = spec.capMs;
     var handle = null;
     var errorCount = 0;
@@ -661,6 +666,19 @@
     return padded ? pad2(value) : groupDigits(value.toString());
   }
 
+  // Writes digits as text, adding a <wbr> after each thousands comma so a very long number
+  // wraps cleanly between digit groups. <wbr> adds no characters: textContent stays exact.
+  function setNumberText(el, text) {
+    if (text.indexOf(',') < 0) { el.textContent = text; return; }
+    el.textContent = '';
+    var doc = el.ownerDocument;
+    var parts = text.split(',');
+    for (var i = 0; i < parts.length; i++) {
+      el.appendChild(doc.createTextNode(i < parts.length - 1 ? parts[i] + ',' : parts[i]));
+      if (i < parts.length - 1) el.appendChild(doc.createElement('wbr'));
+    }
+  }
+
   function makeCounterView(cardEl, spec) {
     var valueEls = cardEl.querySelectorAll('[data-seg]');
     var statusEl = cardEl.querySelector('[data-status]');
@@ -703,7 +721,7 @@
         var longest = 0;
         for (var i = 0; i < 3; i++) {
           if (texts[i] !== shown[i]) {
-            valueEls[i].textContent = texts[i];
+            setNumberText(valueEls[i], texts[i]);
             shown[i] = texts[i];
           }
           if (texts[i].length > longest) longest = texts[i].length;

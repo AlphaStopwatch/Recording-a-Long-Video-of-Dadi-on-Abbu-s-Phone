@@ -236,8 +236,8 @@ main {
   line-height: 1.1;
   color: var(--ivory);
   text-shadow: 0 0 18px color-mix(in srgb, var(--accent) 35%, transparent);
-  overflow-wrap: anywhere;
-  word-break: break-all;
+  overflow-wrap: anywhere; /* breaks between digit groups first (<wbr>), inside a group only if it must */
+  word-break: normal;
   text-align: center;
   max-width: 100%;
 }

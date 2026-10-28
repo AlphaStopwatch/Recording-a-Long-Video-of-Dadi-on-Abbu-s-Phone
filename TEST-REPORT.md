@@ -1,5 +1,26 @@
 # Testing and verification report
 
+## Update: the counters were not running in real browsers (fixed)
+
+**Cause.** `createCounter` defaulted to `{ set: setTimeout, clear: clearTimeout }` and called `timers.set(...)`.
+Browsers throw `Illegal invocation` when `setTimeout` runs as a method of another object. Node does not, and every
+earlier test injected fake timers, so the production path was never exercised. In a browser the first counter drew
+once, threw while scheduling its next tick, and that exception aborted `boot()`: the other two counters, the time
+sync and the watchdogs never started.
+
+**Fix.** The default timers are now wrapper functions (`script.js`, `createCounter`).
+**Also changed.** Long numbers now wrap between thousands groups (`<wbr>` after each comma) instead of mid-group.
+
+**Verification after the fix**
+- `node --test tests/core.test.js`: 44 passed, including new regression test R1 (verified to FAIL on the old code).
+- `python3 tests/browser-smoke.py` (real Chromium): no page errors; all three counters `running`; seconds advance every second for 12 s;
+  no overflow with 1 to 5000-digit values at 320, 768 and 1280 px. A separate sweep covered 320/375/768/1200/1600 px: 40/40 clean.
+- Displayed value checked against hand calculation (22 h 3 min 54 s at 21:13:54 UTC on 28 Oct 2026).
+- `tests/dom.test.js` was NOT re-run here (jsdom is not installed in this environment); run `npm install && npm test`.
+
+---
+## Original report
+
 Run: `node --test tests/core.test.js tests/dom.test.js` on Node 22.22.2.
 Result: **49 tests, 49 passed, 0 failed** (about 6.8 s). Raw output: `tests/last-run.tap`.
 
