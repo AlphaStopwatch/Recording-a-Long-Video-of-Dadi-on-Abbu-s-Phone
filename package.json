@@ -1,0 +1,8 @@
+{
+  "name": "grandma-time-capsule",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static time-capsule website with three independent BigInt counters.",
+  "scripts": { "test": "node --test tests/core.test.js tests/dom.test.js" },
+  "devDependencies": { "jsdom": "^26.0.0" }
+}

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" data-sync="unverified">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>The Grandma’s Time Capsule</title>
+  <meta name="description" content="A permanent digital keepsake: three independent counters measuring the time since 28 October 2026, 05:10 AM, Bangladesh time.">
+  <meta name="theme-color" content="#07040b">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#counters">Skip to the counters</a>
+
+  <header class="hero">
+    <div class="orbit" aria-hidden="true">
+      <svg viewBox="0 0 200 200" focusable="false">
+        <circle class="ring ring-a" cx="100" cy="100" r="92" pathLength="100"/>
+        <circle class="ring ring-b" cx="100" cy="100" r="74" pathLength="100"/>
+        <circle class="ring ring-c" cx="100" cy="100" r="56" pathLength="100"/>
+        <g class="spin spin-slow"><circle class="star" cx="100" cy="8" r="2.4"/></g>
+        <g class="spin spin-mid"><circle class="star star-cyan" cx="100" cy="26" r="1.8"/></g>
+        <path class="heart" d="M100 121 C 78 104, 84 84, 100 92 C 116 84, 122 104, 100 121 Z"/>
+      </svg>
+    </div>
+    <h1>The Grandma’s Time Capsule</h1>
+    <p class="since">
+      Counting since
+      <time datetime="2026-10-28T05:10:00+06:00">28 October 2026, 05:10:00 AM</time>
+      <span class="zone">Bangladesh time (Asia/Dhaka, UTC+06:00)</span>
+    </p>
+  </header>
+
+  <main>
+    <div id="integrity-error" class="integrity" role="alert" hidden>
+      The built-in starting time failed its self-check, so the counters were stopped rather than show a wrong value.
+    </div>
+
+    <section class="sync" aria-label="Time synchronisation">
+      <p id="sync-status" class="sync-status" role="status" aria-live="polite">◌ Checking internet time…</p>
+      <p id="sync-detail" class="sync-detail"></p>
+      <button id="sync-now" class="btn" type="button">Check time now</button>
+    </section>
+
+    <div id="counters" class="counters">
+
+      <!-- Counter 1 -->
+      <section class="card card-calendar" data-counter="calendar" data-state="starting" data-size="m" aria-labelledby="t-calendar">
+        <h2 id="t-calendar">Calendar journey</h2>
+        <p class="format">YEARS : MONTHS : DAYS</p>
+        <div class="value" data-timer role="timer" aria-label="Starting">
+          <div class="seg"><span class="num" data-seg>0</span><span class="unit">years</span></div>
+          <span class="colon" aria-hidden="true">:</span>
+          <div class="seg"><span class="num" data-seg>00</span><span class="unit">months</span></div>
+          <span class="colon" aria-hidden="true">:</span>
+          <div class="seg"><span class="num" data-seg>00</span><span class="unit">days</span></div>
+        </div>
+        <p class="sub">Time measured through the calendar.</p>
+        <p class="status" data-status>◌ Starting</p>
+        <p class="card-error" data-error role="status" hidden></p>
+        <details class="inspect" data-inspect>
+          <summary>Inspect exact numbers</summary>
+          <pre data-inspect-out></pre>
+        </details>
+      </section>
+
+      <!-- Counter 2 -->
+      <section class="card card-days" data-counter="days" data-state="starting" data-size="m" aria-labelledby="t-days">
+        <h2 id="t-days">Total days remembered</h2>
+        <p class="format">TOTAL DAYS : HOURS : MINUTES</p>
+        <div class="value" data-timer role="timer" aria-label="Starting">
+          <div class="seg"><span class="num" data-seg>0</span><span class="unit">days</span></div>
+          <span class="colon" aria-hidden="true">:</span>
+          <div class="seg"><span class="num" data-seg>00</span><span class="unit">hours</span></div>
+          <span class="colon" aria-hidden="true">:</span>
+          <div class="seg"><span class="num" data-seg>00</span><span class="unit">minutes</span></div>
+        </div>
+        <p class="sub">The complete elapsed duration expressed in days, hours, and minutes.</p>
+        <p class="status" data-status>◌ Starting</p>
+        <p class="card-error" data-error role="status" hidden></p>
+        <details class="inspect" data-inspect>
+          <summary>Inspect exact numbers</summary>
+          <pre data-inspect-out></pre>
+        </details>
+      </section>
+
+      <!-- Counter 3 -->
+      <section class="card card-hours" data-counter="hours" data-state="starting" data-size="m" aria-labelledby="t-hours">
+        <h2 id="t-hours">Every second matters</h2>
+        <p class="format">TOTAL HOURS : MINUTES : SECONDS</p>
+        <div class="value" data-timer role="timer" aria-label="Starting">
+          <div class="seg"><span class="num" data-seg>0</span><span class="unit">hours</span></div>
+          <span class="colon" aria-hidden="true">:</span>
+          <div class="seg"><span class="num" data-seg>00</span><span class="unit">minutes</span></div>
+          <span class="colon" aria-hidden="true">:</span>
+          <div class="seg"><span class="num" data-seg>00</span><span class="unit">seconds</span></div>
+        </div>
+        <p class="sub">The complete elapsed duration expressed in hours, minutes, and seconds.</p>
+        <p class="status" data-status>◌ Starting</p>
+        <p class="card-error" data-error role="status" hidden></p>
+        <details class="inspect" data-inspect>
+          <summary>Inspect exact numbers</summary>
+          <pre data-inspect-out></pre>
+        </details>
+      </section>
+
+    </div>
+
+    <noscript><p class="integrity">The counters need JavaScript to calculate the elapsed time. The memory below is still readable.</p></noscript>
+
+    <section class="memory" aria-labelledby="memory-title" lang="bn">
+      <h2 id="memory-title">দাদির স্মৃতি ধরে রাখার এক বিশেষ প্রচেষ্টা ❤️</h2>
+
+      <p>২৮ অক্টোবর ২০২৬, ভোর ৫টা ১০ মিনিট থেকে শুরু হওয়া এই বিশেষ সময়ের সঙ্গে জড়িয়ে আছে আমার জীবনের একটি আবেগপূর্ণ স্মৃতি।</p>
+
+      <p>আজ আমি আব্বুর দ্বিতীয় ফোনটি ব্যবহার করে আমার দাদির প্রায় ৪ ঘণ্টা ৪ মিনিট ৪ সেকেন্ডের একটি দীর্ঘ ভিডিও ধারণ করেছি। ভিডিওটি ধারণ করার পেছনে আমার একটি বিশেষ উদ্দেশ্য ছিল। দাদি আমাদের জীবনের অত্যন্ত আপন একজন মানুষ। কিন্তু মানুষের জীবন অনিশ্চিত—কেউ জানে না, প্রিয় মানুষটি আর কত দিন আমাদের সঙ্গে থাকবেন। সেই বাস্তবতা থেকেই মনে হয়েছে, দাদির সঙ্গে কাটানো এই সময়টুকু যতটা সম্ভব সুন্দরভাবে সংরক্ষণ করে রাখা উচিত।</p>
+
+      <p>আমি জানি, একটি ভিডিও কখনোই একজন মানুষকে আমাদের পাশে থাকার মতো করে ফিরিয়ে দিতে পারে না। তবু ভিডিওতে তাঁর উপস্থিতি, তাঁর কণ্ঠস্বর, তাঁর স্বাভাবিক চলাফেরা এবং তাঁর সঙ্গে জড়িয়ে থাকা ছোট ছোট মুহূর্তগুলো ভবিষ্যতে আমার কাছে অমূল্য স্মৃতি হয়ে থাকবে। একদিন হয়তো এই ভিডিওগুলো দেখেই অতীতের সেই সময়গুলো আবার মনে করতে পারব। সেই ভাবনা থেকেই এত দীর্ঘ সময় ধরে ভিডিওটি ধারণ করেছি।</p>
+
+      <p>ভিডিওটির মূল আকার ছিল প্রায় ২১ জিবি। এত বড় একটি ভিডিও সংরক্ষণ করা এবং অনলাইনে আপলোড করা সহজ কাজ ছিল না। তবু শেষ পর্যন্ত আমি ভিডিওটি ইউটিউবে আপলোড করতে পেরেছি। আপলোডের পর ভিডিওটির আকার প্রায় ৫.১ জিবি হয়েছে। এত বড় একটি ভিডিও সফলভাবে তৈরি করা এবং আপলোড করতে পারা আমার কাছে সত্যিই একটি বড় অর্জন।</p>
+
+      <p>সবচেয়ে আনন্দের বিষয় হলো, ইউটিউবে ভিডিওটি দেখেও আমার ভালো লেগেছে। ভিডিওর দৃশ্যমান মান আমার কাছে বেশ সুন্দর মনে হয়েছে। এত দীর্ঘ একটি ভিডিও ধারণ করে সেটি অনলাইনে সংরক্ষণ করতে পারা আমার জন্য স্বস্তির বিষয়। কারণ আমি চাই, এই স্মৃতিগুলো শুধু আজকের জন্য নয়, ভবিষ্যতের জন্যও যত্ন করে রেখে দিতে।</p>
+
+      <p>আমার পরিকল্পনা হলো, যখন আমি একটি ভালো মানের হ্যান্ডব্যাগ কিনব, তখন প্রয়োজনীয় জিনিসপত্র গুছিয়ে নিয়ে সবকিছু একে একে সঙ্গে করে নিয়ে যাব। যেসব ভিডিও ও স্মৃতি আমার কাছে গুরুত্বপূর্ণ, সেগুলো যেন নিরাপদে সংরক্ষণ করতে পারি এবং প্রয়োজনের সময় সহজেই খুঁজে পাই, সেটাই আমার ইচ্ছা।</p>
+
+      <p>আমি জানি, সময় কখনো থেমে থাকে না। আজকের দিনও একসময় অতীত হয়ে যাবে। কিন্তু আজকের এই মুহূর্তগুলোকে যত্ন করে ধরে রাখতে পারলে ভবিষ্যতে সেগুলোই আমার কাছে বিশেষ স্মৃতি হয়ে ফিরে আসবে।</p>
+
+      <p>দাদির সঙ্গে কাটানো প্রতিটি মুহূর্ত আমার কাছে মূল্যবান। তাই তাঁর স্মৃতিগুলো ধরে রাখার এই ছোট্ট প্রচেষ্টা আমার কাছে শুধু একটি ভিডিও তৈরি করা বা ইউটিউবে আপলোড করার বিষয় নয়; এটি আমার জীবনের একটি গুরুত্বপূর্ণ সময়কে ভবিষ্যতের জন্য সংরক্ষণ করে রাখার চেষ্টা।</p>
+
+      <p>আমি চাই, সময় যতই এগিয়ে যাক, এই ভিডিওগুলো যেন আমাকে দাদির কথা মনে করিয়ে দেয়। তাঁর উপস্থিতির স্মৃতি যেন হারিয়ে না যায়। আজ যে মুহূর্তগুলো সাধারণ বলে মনে হচ্ছে, ভবিষ্যতে সেগুলোই হয়তো আমার কাছে সবচেয়ে মূল্যবান হয়ে উঠবে।</p>
+
+      <p class="closing">সময় চলে যায়, কিন্তু ভালোবাসার স্মৃতিগুলো যত্ন করে ধরে রাখা যায়। ❤️</p>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <details class="about">
+      <summary>How the time is kept, and its limits</summary>
+      <div>
+        <p>The starting moment is written into this page’s code and never changes. Every counter is recalculated from it, so closing the page, losing the connection, or a phone going to sleep never resets anything.</p>
+        <p>Current time is estimated from internet time services (WorldTimeAPI, TimeAPI.io, and this site’s host) and carried forward with the device’s monotonic clock. None of these is an official Bangladesh government service. Network delay and clock differences mean the display can be off by a fraction of a second, and more when the status says “Estimating”.</p>
+        <p>Numbers are exact whole-number arithmetic, so there is no fixed upper limit other than the device’s memory.</p>
+      </div>
+    </details>
+    <details class="about">
+      <summary>Recent technical notes</summary>
+      <pre id="diagnostics">No problems recorded.</pre>
+    </details>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
